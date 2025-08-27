@@ -1,32 +1,10 @@
 package linkedlists
 
 import (
-	"errors"
-	"fmt"
 	"testing"
+
+	testutils "github.com/mThanuj/dsa/test_utils"
 )
-
-func assert[T comparable](got []T, want []T) error {
-	if len(got) != len(want) {
-		return errors.New("length of got and want mismatch")
-	}
-
-	for i := range got {
-		if got[i] != want[i] {
-			return fmt.Errorf("at index %d: got %v, but wanted %v", i, got[i], want[i])
-		}
-	}
-
-	return nil
-}
-
-func assertEquals[T comparable](got T, want T) error {
-	if got != want {
-		return fmt.Errorf("got %v, but wanted %v", got, want)
-	}
-
-	return nil
-}
 
 func TestAdd(t *testing.T) {
 	ll := LinkedList[int]{}
@@ -38,9 +16,8 @@ func TestAdd(t *testing.T) {
 	got := ll.ToSlice()
 	want := []int{10, 20, 30}
 
-	err := assert(got, want)
-	if err != nil {
-		t.Error(err.Error())
+	if err := testutils.SliceEquals(got, want); err != nil {
+		t.Fatal(err.Error())
 	}
 }
 
@@ -56,9 +33,8 @@ func TestInsertAtBeginning(t *testing.T) {
 	got := ll.ToSlice()
 	want := []int{5, 10, 20, 30}
 
-	err := assert(got, want)
-	if err != nil {
-		t.Error(err.Error())
+	if err := testutils.SliceEquals(got, want); err != nil {
+		t.Fatal(err.Error())
 	}
 }
 
@@ -71,16 +47,14 @@ func TestInsertAt(t *testing.T) {
 
 	err := ll.InsertAt(15, 1)
 	if err != nil {
-		t.Error(err.Error())
-		return
+		t.Fatal(err.Error())
 	}
 
 	got := ll.ToSlice()
 	want := []int{10, 15, 20, 30}
 
-	err = assert(got, want)
-	if err != nil {
-		t.Error(err.Error())
+	if err = testutils.SliceEquals(got, want); err != nil {
+		t.Fatal(err.Error())
 	}
 }
 
@@ -96,10 +70,8 @@ func TestRemove(t *testing.T) {
 	got := ll.ToSlice()
 	want := []int{20, 30}
 
-	err := assert(got, want)
-	if err != nil {
-		t.Error(err.Error())
-		return
+	if err := testutils.SliceEquals(got, want); err != nil {
+		t.Fatal(err.Error())
 	}
 
 	ll.InsertAtBeginning(10)
@@ -111,9 +83,8 @@ func TestRemove(t *testing.T) {
 	got = ll.ToSlice()
 	want = []int{10, 20, 30, 40}
 
-	err = assert(got, want)
-	if err != nil {
-		t.Error(err.Error())
+	if err := testutils.SliceEquals(got, want); err != nil {
+		t.Fatal(err.Error())
 	}
 }
 
@@ -126,17 +97,14 @@ func TestRemoveAt(t *testing.T) {
 
 	err := ll.RemoveAt(1)
 	if err != nil {
-		t.Error(err.Error())
-		return
+		t.Fatal(err.Error())
 	}
 
 	got := ll.ToSlice()
 	want := []int{10, 30}
 
-	err = assert(got, want)
-	if err != nil {
-		t.Error(err.Error())
-		return
+	if err = testutils.SliceEquals(got, want); err != nil {
+		t.Fatal(err.Error())
 	}
 
 	ll.InsertAt(20, 1)
@@ -147,9 +115,8 @@ func TestRemoveAt(t *testing.T) {
 	got = ll.ToSlice()
 	want = []int{20, 30, 40}
 
-	err = assert(got, want)
-	if err != nil {
-		t.Error(err.Error())
+	if err = testutils.SliceEquals(got, want); err != nil {
+		t.Fatal(err.Error())
 	}
 }
 
@@ -165,9 +132,8 @@ func TestRemoveFirst(t *testing.T) {
 	got := ll.ToSlice()
 	want := []int{20, 30}
 
-	err := assert(got, want)
-	if err != nil {
-		t.Error(err.Error())
+	if err := testutils.SliceEquals(got, want); err != nil {
+		t.Fatal(err.Error())
 	}
 }
 
@@ -182,10 +148,8 @@ func TestRemoveLast(t *testing.T) {
 	got := ll.ToSlice()
 	want := []int{10}
 
-	err := assert(got, want)
-	if err != nil {
-		t.Error(err.Error())
-		return
+	if err := testutils.SliceEquals(got, want); err != nil {
+		t.Fatal(err.Error())
 	}
 
 	ll.RemoveLast()
@@ -193,9 +157,8 @@ func TestRemoveLast(t *testing.T) {
 	got = ll.ToSlice()
 	want = []int{}
 
-	err = assert(got, want)
-	if err != nil {
-		t.Error(err.Error())
+	if err := testutils.SliceEquals(got, want); err != nil {
+		t.Fatal(err.Error())
 	}
 }
 
@@ -209,18 +172,15 @@ func TestFind(t *testing.T) {
 	got := ll.Find(10)
 	want := true
 
-	err := assertEquals(got, want)
-	if err != nil {
-		t.Error(err.Error())
-		return
+	if err := testutils.Equals(got, want); err != nil {
+		t.Fatal(err.Error())
 	}
 
 	got = ll.Find(50)
 	want = false
 
-	err = assertEquals(got, want)
-	if err != nil {
-		t.Error(err.Error())
+	if err := testutils.Equals(got, want); err != nil {
+		t.Fatal(err.Error())
 	}
 }
 
@@ -234,18 +194,15 @@ func TestIndexOf(t *testing.T) {
 	got := ll.IndexOf(10)
 	want := 0
 
-	err := assertEquals(got, want)
-	if err != nil {
-		t.Error(err.Error())
-		return
+	if err := testutils.Equals(got, want); err != nil {
+		t.Fatal(err.Error())
 	}
 
 	got = ll.IndexOf(50)
 	want = -1
 
-	err = assertEquals(got, want)
-	if err != nil {
-		t.Error(err.Error())
+	if err := testutils.Equals(got, want); err != nil {
+		t.Fatal(err.Error())
 	}
 }
 
@@ -259,9 +216,8 @@ func TestLength(t *testing.T) {
 	got := ll.Length()
 	want := 3
 
-	err := assertEquals(got, want)
-	if err != nil {
-		t.Error(err.Error())
+	if err := testutils.Equals(got, want); err != nil {
+		t.Fatal(err.Error())
 	}
 }
 
@@ -271,10 +227,8 @@ func TestIsEmpty(t *testing.T) {
 	got := ll.IsEmpty()
 	want := true
 
-	err := assertEquals(got, want)
-	if err != nil {
-		t.Error(err.Error())
-		return
+	if err := testutils.Equals(got, want); err != nil {
+		t.Fatal(err.Error())
 	}
 
 	ll.Add(10)
@@ -284,9 +238,8 @@ func TestIsEmpty(t *testing.T) {
 	got = ll.IsEmpty()
 	want = false
 
-	err = assertEquals(got, want)
-	if err != nil {
-		t.Error(err.Error())
+	if err := testutils.Equals(got, want); err != nil {
+		t.Fatal(err.Error())
 	}
 }
 
@@ -302,8 +255,7 @@ func TestClear(t *testing.T) {
 	got := ll.Length()
 	want := 0
 
-	err := assertEquals(got, want)
-	if err != nil {
-		t.Error(err.Error())
+	if err := testutils.Equals(got, want); err != nil {
+		t.Fatal(err.Error())
 	}
 }
