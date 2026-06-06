@@ -1,5 +1,7 @@
 package io.github.mthanuj.sorting;
 
+import io.github.mthanuj.Utils;
+
 public class SelectionSort {
 
     public int[] solve(int[] arr) {
@@ -11,9 +13,7 @@ public class SelectionSort {
                 }
             }
 
-            int temp = arr[i];
-            arr[i] = arr[smallest];
-            arr[smallest] = temp;
+            Utils.swap(arr, i, smallest);
         }
 
         return arr;
