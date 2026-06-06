@@ -1,0 +1,72 @@
+name: 📖 Documentation
+description: Report a problem with — or suggest an improvement to — the documentation (README, CONTRIBUTING, Javadoc, comments, etc.).
+title: "[Docs]: "
+labels: ["documentation"]
+assignees: []
+
+body:
+    - type: markdown
+      attributes:
+          value: |
+              Thanks for helping improve the docs! Documentation issues are some of the fastest to resolve and a great way to make your first contribution.
+
+    - type: dropdown
+      id: kind
+      attributes:
+          label: What kind of issue is this?
+          options:
+              - Typo / grammar
+              - Incorrect or outdated information
+              - Unclear explanation (needs more detail or examples)
+              - Missing documentation (something should be documented but isn't)
+              - Broken link
+              - Suggestion for a new section or improvement
+              - Other (describe in the next field)
+      validations:
+          required: true
+
+    - type: input
+      id: location
+      attributes:
+          label: Where is the issue?
+          description: The file path or section that has the problem.
+          placeholder: |
+              e.g. README.md → "Implemented Algorithms" section
+              or   src/main/java/io/github/mthanuj/sorting/BubbleSort.java → class Javadoc
+      validations:
+          required: true
+
+    - type: dropdown
+      id: severity
+      attributes:
+          label: Severity
+          options:
+              - High — incorrect or actively misleading
+              - Medium — confusing but not wrong
+              - Low — cosmetic / nice-to-have
+      validations:
+          required: true
+
+    - type: textarea
+      id: description
+      attributes:
+          label: Describe the issue or suggestion
+          description: What's wrong, or what would you like to see instead?
+      validations:
+          required: true
+
+    - type: textarea
+      id: proposed
+      attributes:
+          label: Proposed change (optional)
+          description: If you have a specific rewording or new content in mind, paste it here. For larger suggestions, opening a PR alongside the issue is welcome.
+      validations:
+          required: false
+
+    - type: textarea
+      id: context
+      attributes:
+          label: Additional context
+          description: Screenshots, related issues, or anything else that helps.
+      validations:
+          required: false

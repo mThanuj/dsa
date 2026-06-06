@@ -1,8 +1,17 @@
 # DSA — Data Structures and Algorithms in Java
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Java](https://img.shields.io/badge/Java-26-orange.svg)](https://www.java.com)
+[![Maven](https://img.shields.io/badge/Maven-3.6%2B-blue.svg)](https://maven.apache.org/)
+[![JUnit 4](https://img.shields.io/badge/JUnit-4.13-green.svg)](https://junit.org/junit4/)
+[![CI](https://github.com/mThanuj/dsa/actions/workflows/ci.yml/badge.svg)](https://github.com/mThanuj/dsa/actions/workflows/ci.yml)
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.1-ff69b4.svg)](CODE_OF_CONDUCT.md)
+
 A personal collection of classic **Data Structures and Algorithms** implemented in **Java**, organized as a Maven project. Each algorithm is written from scratch (no third-party libraries) and paired with **JUnit** tests to verify correctness.
 
 > 🎯 The goal of this repository is to build a clean, well-tested, and easy-to-read reference library of fundamental algorithms, one topic at a time.
+
+> 🧠 **Note to contributors:** This is a **learning project**. Please read [`CONTRIBUTING.md`](CONTRIBUTING.md) — especially the **no-AI policy** and the **use-existing-packages** rule — before opening a PR.
 
 ---
 
@@ -25,10 +34,7 @@ A personal collection of classic **Data Structures and Algorithms** implemented 
   - [🧰 Shared Utilities](#-shared-utilities)
   - [📚 Implemented Algorithms](#-implemented-algorithms)
     - [🔢 Sorting](#-sorting)
-      - [Bubble Sort](#bubble-sort)
-      - [Selection Sort](#selection-sort)
   - [🤝 Contributing](#-contributing)
-    - [Coding Conventions](#coding-conventions)
   - [📄 License](#-license)
   - [🌟 Acknowledgements](#-acknowledgements)
 
@@ -65,20 +71,21 @@ The project is intentionally lightweight — just **Java + Maven** — so you ca
 dsa/
 ├── pom.xml
 ├── .gitignore
+├── LICENSE
+├── README.md
+├── CONTRIBUTING.md
 └── src/
     ├── main/
     │   └── java/
     │       └── io/github/mthanuj/
     │           ├── Utils.java
-    │           └── sorting/
-    │               ├── BubbleSort.java
-    │               └── SelectionSort.java
+    │           └── <topic>/          # One package per existing topic
+    │               └── <Algorithm>.java
     └── test/
         └── java/
             └── io/github/mthanuj/
-                └── sorting/
-                    ├── BubbleSortTest.java
-                    └── SelectionSortTest.java
+                └── <topic>/          # Mirror of the main package structure
+                    └── <Algorithm>Test.java
 ```
 
 | Path | Purpose |
@@ -176,80 +183,93 @@ Utils.reverse(arr);      // arr -> { 1, 2, 3 }
 
 ## 📚 Implemented Algorithms
 
+Code in this repository evolves over time, so the snippets below are **generic** — they show the API shape, not a snapshot of any specific implementation.
+
 ### 🔢 Sorting
 
-| Algorithm | Class | Time Complexity (Best / Avg / Worst) | Space | Stable |
-| --- | --- | --- | --- | --- |
-| [Bubble Sort](src/main/java/io/github/mthanuj/sorting/BubbleSort.java) | `BubbleSort` | `O(n)` / `O(n²)` / `O(n²)` | `O(1)` | ✅ |
-| [Selection Sort](src/main/java/io/github/mthanuj/sorting/SelectionSort.java) | `SelectionSort` | `O(n²)` / `O(n²)` / `O(n²)` | `O(1)` | ❌ |
-
-#### Bubble Sort
-
-Repeatedly walks through the array, comparing adjacent pairs and **swapping** them when out of order. After each pass, the largest remaining element "bubbles up" to its final position at the end.
+Each sorting algorithm in this repo follows the same uniform API: instantiate the class, call `solve(int[] arr)`, and the input array is sorted in place (and also returned for convenience).
 
 ```java
-int[] arr = { 5, 3, 4, 1, 2 };
-BubbleSort sorter = new BubbleSort();
-int[] sorted = sorter.solve(arr); // [1, 2, 3, 4, 5]
+import io.github.mthanuj.sorting.<Algorithm>;
+
+int[] arr = { /* some input */ };
+<Algorithm> algorithm = new <Algorithm>();
+int[] sorted = algorithm.solve(arr);
 ```
 
-#### Selection Sort
-
-Repeatedly finds the minimum element from the unsorted portion of the array and places it at the beginning. Simple but inefficient on large datasets; useful as a teaching example.
-
-```java
-int[] arr = { 5, 3, 4, 1, 2 };
-SelectionSort sorter = new SelectionSort();
-int[] sorted = sorter.solve(arr); // [1, 2, 3, 4, 5]
-```
-
-> 💡 More algorithms are on the way! Topics planned: **Searching**, **Recursion**, **Dynamic Programming**, **Graphs**, **Trees**, and more.
+> 📖 Browse the [`io.github.mthanuj.sorting`](src/main/java/io/github/mthanuj/sorting/) package to see the current implementations.
 
 ---
 
 ## 🤝 Contributing
 
-Contributions are welcome! Whether it's fixing a typo, adding a new algorithm, or improving tests — every bit helps.
+Contributions are welcome! But this is a **learning project**, so please take a moment to read **[`CONTRIBUTING.md`](CONTRIBUTING.md)** before opening an issue or PR. The guide covers:
+
+- 🧠 **The no-AI policy** — write the code yourself; AI is fine as a tutor but not an author.
+- 📦 **Use existing packages** — add your `.java` files to the packages already in the repo (e.g., `io.github.mthanuj.sorting`). Don't create new topic packages; if you think one is needed, open an issue first.
+- 🛠 **Development setup** (JDK 26, Maven, IDE)
+- 📏 **Coding conventions** (Java style, naming, `solve(...)` API, `Utils` reuse, Javadoc)
+- ✅ **Testing guidelines** (typical, edge, and adversarial cases)
+- 💬 **Commit message conventions** (Conventional Commits)
+- 🔁 **Pull request process** (branching, review, merge)
+
+Quick start:
 
 1. **Fork** the repository.
-2. Create a new branch for your feature:
+2. **Create a feature branch** from `main`:
 
    ```bash
-   git checkout -b feature/new-algorithm
+   git checkout -b feat/your-algorithm-name
    ```
 
-3. **Add your implementation** under the appropriate topic package
-   (e.g., `src/main/java/io/github/mthanuj/<topic>/`).
-4. **Write unit tests** in the matching test package
-   (e.g., `src/test/java/io/github/mthanuj/<topic>/`).
-5. Make sure all tests pass:
+3. **Add your new algorithm** as a `.java` file inside one of the **existing** topic packages (and a matching `<Algorithm>Test` in the parallel test package).
+4. **Run the full test suite** locally:
 
    ```bash
-   mvn test
+   mvn clean test
    ```
 
-6. **Commit** your changes and **push** to your fork.
-7. Open a **Pull Request** describing what you added and why.
+5. **Open a Pull Request** against `main`.
 
-### Coding Conventions
-
-- One public class per file, named after the algorithm (e.g., `QuickSort`).
-- Expose the main behavior via a `solve(...)` method (or a similarly named entry point).
-- Reuse helpers from `io.github.mthanuj.Utils` (e.g., `Utils.swap`) instead of inlining low-level operations.
-- Keep code self-documenting; add Javadoc only where the intent isn't obvious.
-- Always include JUnit tests covering the **typical**, **edge**, and **adversarial** cases.
+> 📖 The full guide ([`CONTRIBUTING.md`](CONTRIBUTING.md)) is the source of truth — please give it a read before opening your first PR.
 
 ---
 
 ## 📄 License
 
-This project is open source. If a license is not yet specified, the source is provided **as-is** for educational purposes. Please add a `LICENSE` file (e.g., **MIT**, **Apache-2.0**) if you intend to share it publicly.
+This project is licensed under the **MIT License** — a short, permissive license that lets people do almost anything they want with the code, including using it commercially, as long as the copyright notice and license terms are preserved.
+
+See the full license text in the [`LICENSE`](LICENSE) file.
+
+```
+MIT License
+
+Copyright (c) 2026 mThanuj
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
 
 ---
 
 ## 🌟 Acknowledgements
 
-- Inspired by classic algorithm textbooks (CLRS, *Introduction to Algorithms*).
+- Inspired by classic algorithm textbooks (CLRS, _Introduction to Algorithms_).
 - Powered by [Maven](https://maven.apache.org/) and [JUnit](https://junit.org/junit4/).
 
 ---

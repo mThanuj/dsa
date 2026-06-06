@@ -1,1 +1,26 @@
+# Build output
 /target/
+/build/
+/out/
+
+# IDE — IntelliJ
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# IDE — VS Code
+.vscode/
+.classpath
+.project
+.settings/
+
+# IDE — Eclipse
+bin/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

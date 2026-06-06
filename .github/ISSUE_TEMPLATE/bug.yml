@@ -1,0 +1,95 @@
+name: 🐛 Bug Report
+description: Report a bug or incorrect behavior in an existing algorithm or its tests.
+title: "[Bug]: "
+labels: ["bug"]
+assignees: []
+
+body:
+    - type: markdown
+      attributes:
+          value: |
+              Thanks for taking the time to file a bug! Please fill out the sections below.
+              A great bug report is small, reproducible, and unambiguous.
+
+    - type: input
+      id: algorithm
+      attributes:
+          label: Which algorithm is affected?
+          description: The class name and the package it lives in (e.g. `io.github.mthanuj.sorting.BubbleSort`).
+          placeholder: io.github.mthanuj.sorting.<Algorithm>
+      validations:
+          required: true
+
+    - type: dropdown
+      id: severity
+      attributes:
+          label: Severity
+          description: How serious is this bug?
+          options:
+              - Critical — algorithm produces wrong output on typical input
+              - High — algorithm fails on an edge case (empty / single-element / duplicates / sorted)
+              - Medium — performance regression or code-quality issue
+              - Low — minor cosmetic / documentation-only issue
+      validations:
+          required: true
+
+    - type: textarea
+      id: description
+      attributes:
+          label: Describe the bug
+          description: A clear, concise summary of what is wrong.
+          placeholder: |
+              The algorithm returns the wrong result when the input is …
+      validations:
+          required: true
+
+    - type: textarea
+      id: reproduce
+      attributes:
+          label: Steps to reproduce
+          description: Minimal code or input that triggers the bug. Include the exact array (or describe it) and the call to `solve(...)`.
+          placeholder: |
+              ```java
+              int[] arr = { /* … */ };
+              new <Algorithm>().solve(arr);
+              // expected: [ … ]
+              // actual:   [ … ]
+              ```
+      validations:
+          required: true
+
+    - type: textarea
+      id: expected
+      attributes:
+          label: Expected behavior
+          description: What did you expect to happen?
+      validations:
+          required: true
+
+    - type: textarea
+      id: actual
+      attributes:
+          label: Actual behavior
+          description: What actually happened? Include any error messages or stack traces verbatim.
+      validations:
+          required: true
+
+    - type: input
+      id: environment
+      attributes:
+          label: Environment
+          description: Output of `java -version` and `mvn -v`, plus your OS.
+          placeholder: |
+              - OS: Windows 11 / macOS 15 / Ubuntu 24.04
+              - JDK: 26
+              - Maven: 3.9.x
+      validations:
+          required: true
+
+    - type: textarea
+      id: context
+      attributes:
+          label: Additional context
+          description: Anything else that might help — screenshots, related issues, links to references, etc.
+      validations:
+          required: false

@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+    - name: 💬 Contributing Guide
+      url: https://github.com/mThanuj/dsa/blob/main/CONTRIBUTING.md
+      about: Read this first — it covers the no-AI policy, package rules, and the PR workflow.

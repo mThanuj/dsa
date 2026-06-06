@@ -1,0 +1,41 @@
+name: CI
+
+on:
+    push:
+    pull_request:
+
+jobs:
+    test:
+        name: Build and test (JDK 26)
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+
+            - name: Set up JDK 26
+              uses: actions/setup-java@v4
+              with:
+                  java-version: "26"
+                  distribution: "temurin"
+                  cache: "maven"
+
+            - name: Verify Maven wrapper / project layout
+              run: mvn -v
+
+            - name: Compile sources
+              run: mvn -B -ntp compile
+
+            - name: Run tests
+              run: mvn -B -ntp test
+
+            - name: Upload Surefire test reports
+              if: always()
+              uses: actions/upload-artifact@v4
+              with:
+                  name: surefire-reports-${{ github.run_id }}
+                  path: |
+                      target/surefire-reports
+                      target/site
+                  if-no-files-found: ignore
+                  retention-days: 14

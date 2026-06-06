@@ -10,8 +10,6 @@
     <version>1.0-SNAPSHOT</version>
 
     <name>dsa</name>
-    <!-- FIXME change it to the project's website -->
-    <!-- <url>http://www.example.com</url> -->
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -77,4 +75,11 @@
             </plugins>
         </pluginManagement>
     </build>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>https://opensource.org/licenses/MIT</url>
+        </license>
+    </licenses>
 </project>
