@@ -26,25 +26,9 @@ body:
     - type: input
       id: package
       attributes:
-          label: Target package
+          label: Target package (Basically the topic name, but the entire package path)
           description: The existing package you plan to add the class to. Must be one that already exists in the repo.
           placeholder: io.github.mthanuj.sorting
-      validations:
-          required: true
-
-    - type: dropdown
-      id: type
-      attributes:
-          label: What are you proposing?
-          description: Pick the closest match.
-          options:
-              - Sorting algorithm
-              - Searching algorithm
-              - Data structure
-              - Graph algorithm
-              - Recursive / divide-and-conquer algorithm
-              - Dynamic programming
-              - Other (describe in the next field)
       validations:
           required: true
 
