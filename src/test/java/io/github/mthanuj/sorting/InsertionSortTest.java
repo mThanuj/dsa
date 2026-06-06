@@ -4,16 +4,16 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 import org.junit.jupiter.api.Test;
 
-class SelectionSortTest {
+class InsertionSortTest {
 
-    private SelectionSort selectionSort = new SelectionSort();
+    private InsertionSort insertionSort = new InsertionSort();
 
     @Test
     void test1() {
         int[] arr = { 5, 3, 4, 1, 2 };
 
         int[] expected = { 1, 2, 3, 4, 5 };
-        int[] actual = selectionSort.solve(arr);
+        int[] actual = insertionSort.solve(arr);
 
         assertArrayEquals(expected, actual);
     }
@@ -23,7 +23,7 @@ class SelectionSortTest {
         int[] arr = { 5, 4, 3, 2, 1 };
 
         int[] expected = { 1, 2, 3, 4, 5 };
-        int[] actual = selectionSort.solve(arr);
+        int[] actual = insertionSort.solve(arr);
 
         assertArrayEquals(expected, actual);
     }

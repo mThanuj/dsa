@@ -1,15 +1,15 @@
 package io.github.mthanuj.sorting;
 
-import static org.junit.Assert.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class BubbleSortTest {
+class BubbleSortTest {
 
     private BubbleSort bubbleSort = new BubbleSort();
 
     @Test
-    public void test1() {
+    void test1() {
         int[] arr = { 5, 3, 4, 1, 2 };
 
         int[] expected = { 1, 2, 3, 4, 5 };
@@ -19,7 +19,7 @@ public class BubbleSortTest {
     }
 
     @Test
-    public void test2() {
+    void test2() {
         int[] arr = { 5, 4, 3, 2, 1 };
 
         int[] expected = { 1, 2, 3, 4, 5 };

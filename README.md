@@ -183,11 +183,7 @@ Utils.reverse(arr);      // arr -> { 1, 2, 3 }
 
 ## 📚 Implemented Algorithms
 
-Code in this repository evolves over time, so the snippets below are **generic** — they show the API shape, not a snapshot of any specific implementation.
-
-### 🔢 Sorting
-
-Each sorting algorithm in this repo follows the same uniform API: instantiate the class, call `solve(int[] arr)`, and the input array is sorted in place (and also returned for convenience).
+Every algorithm lives in its own class under a topic-specific package (e.g., `io.github.mthanuj.sorting`) and follows the same uniform API: instantiate the class, call `solve(...)`, and the input is processed in place (and also returned for convenience).
 
 ```java
 import io.github.mthanuj.sorting.<Algorithm>;
@@ -197,7 +193,19 @@ int[] arr = { /* some input */ };
 int[] sorted = algorithm.solve(arr);
 ```
 
-> 📖 Browse the [`io.github.mthanuj.sorting`](src/main/java/io/github/mthanuj/sorting/) package to see the current implementations.
+The tables below are the **source of truth** for what's implemented. New topics and entries are added here as they're solved — keep the columns consistent: a **name → file link**, a short **description**, and **pointers** on how the algorithm is meant to be reasoned about (key invariant, core idea, common pitfalls).
+
+> 💡 **Adding a new entry?** Append a new row to the relevant topic's table, or create a new `### <Topic>` section with the same three columns. Keep the package link right under the topic heading.
+
+### 🔢 Sorting
+
+> 📖 Package: [`io.github.mthanuj.sorting`](src/main/java/io/github/mthanuj/sorting/)
+
+| Name | Description | Pointers |
+| --- | --- | --- |
+| [BubbleSort](src/main/java/io/github/mthanuj/sorting/BubbleSort.java) | Repeatedly walks the array and swaps adjacent elements that are out of order, "bubbling" the largest unsorted element to the end on each pass. | Outer loop = pass index (grows the sorted suffix); inner loop = pairwise comparisons up to `arr.length - i - 1`; swap with `Utils.swap`. |
+| [SelectionSort](src/main/java/io/github/mthanuj/sorting/SelectionSort.java) | Finds the minimum element in the unsorted prefix and swaps it into the next sorted position at the front. | Outer loop = boundary of the sorted prefix; inner loop scans for the index of the smallest remaining element; one `Utils.swap` per pass. |
+| [InsertionSort](src/main/java/io/github/mthanuj/sorting/InsertionSort.java) | Builds the sorted array one element at a time, taking the next unsorted element and shifting larger sorted elements right to make room for it. | Outer loop = the element being inserted (starting at `i = 1`); inner `while` shifts sorted elements greater than the held `value` one slot to the right; drop the value into the gap at `arr[j + 1]`. |
 
 ---
 
