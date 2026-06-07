@@ -34,6 +34,7 @@ A personal collection of classic **Data Structures and Algorithms** implemented 
   - [🧰 Shared Utilities](#-shared-utilities)
   - [📚 Implemented Algorithms](#-implemented-algorithms)
     - [🔢 Sorting](#-sorting)
+    - [📦 Arrays](#-arrays)
   - [🤝 Contributing](#-contributing)
   - [📄 License](#-license)
   - [🌟 Acknowledgements](#-acknowledgements)
@@ -209,6 +210,14 @@ The tables below are the **source of truth** for what's implemented. New topics 
 | [MergeSort](src/main/java/io/github/mthanuj/sorting/MergeSort.java) | A divide-and-conquer sort that recursively splits the array in half, sorts each half, then merges the two sorted halves back together. | Recursion base = `low >= high` (single element is sorted); split range `[low..high]` at `mid = (low + high) / 2`, sort `[low..mid]` and `[mid+1..high]`, then `merge`; merge uses a temporary buffer to walk two pointers and copies results back into the original range. |
 | [QuickSort](src/main/java/io/github/mthanuj/sorting/QuickSort.java) | A divide-and-conquer sort that partitions the array around a pivot, placing smaller elements to its left and larger ones to its right, then recursively sorts each partition in place. | Recursion base = `low < high`; pick `pivot = arr[high]` (Lomuto scheme), then `partition` walks `j` over `[low..high-1]` maintaining that `[low..i-1] <= pivot` and `[i..j-1] > pivot`; final `Utils.swap(arr, i, high)` parks the pivot at index `i` and recurse on `[low..p-1]` and `[p+1..high]`. |
 | [CountSort](src/main/java/io/github/mthanuj/sorting/CountSort.java) | A non-comparison sort that counts how many times each value appears within a `[min..max]` range, then walks the counts in order to overwrite the original array with the sorted values. | First two passes scan `arr` to find `max` and `min`; allocate a `counts` array sized to the range between them; third pass increments `counts[i + min]` for each element (shifts indices so negative values fit); final nested loop iterates `i` over counts and writes `i - min` into `arr[k++]` exactly `counts[i]` times — supports negative integers as long as the value range stays bounded. |
+
+### 📦 Arrays
+
+> 📖 Package: [`io.github.mthanuj.arrays`](src/main/java/io/github/mthanuj/arrays/)
+
+| Name | Description | Pointers |
+| --- | --- | --- |
+| [LargestElement](src/main/java/io/github/mthanuj/arrays/LargestElement.java) | Scans the array once to find and return the largest element, assuming the input is non-empty. | Seed `max` with `arr[0]`; single pass: for each `i` in `arr`, update `max = i` whenever `i > max`; return `max`. Single linear scan, O(n) time, O(1) extra space — does not mutate the input. |
 
 ---
 
