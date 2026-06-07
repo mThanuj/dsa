@@ -1,8 +1,5 @@
 package io.github.mthanuj.sorting;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class MergeSort {
 
     public int[] solve(int[] arr) {
@@ -23,28 +20,29 @@ public class MergeSort {
     }
 
     private void merge(int[] arr, int low, int mid, int high) {
-        List<Integer> temp = new ArrayList<>();
+        int[] temp = new int[high - low + 1];
         int left = low;
         int right = mid + 1;
+        int k = 0;
 
         while (left <= mid && right <= high) {
             if (arr[left] <= arr[right]) {
-                temp.add(arr[left++]);
+                temp[k++] = arr[left++];
             } else {
-                temp.add(arr[right++]);
+                temp[k++] = arr[right++];
             }
         }
 
         while (left <= mid) {
-            temp.add(arr[left++]);
+            temp[k++] = arr[left++];
         }
 
         while (right <= high) {
-            temp.add(arr[right++]);
+            temp[k++] = arr[right++];
         }
 
         for (int i = low; i <= high; i++) {
-            arr[i] = temp.get(i - low);
+            arr[i] = temp[i - low];
         }
     }
 
