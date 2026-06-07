@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Java](https://img.shields.io/badge/Java-26-orange.svg)](https://www.java.com)
 [![Maven](https://img.shields.io/badge/Maven-3.6%2B-blue.svg)](https://maven.apache.org/)
-[![JUnit 4](https://img.shields.io/badge/JUnit-4.13-green.svg)](https://junit.org/junit4/)
+[![JUnit Jupiter](https://img.shields.io/badge/JUnit%20Jupiter-6.1.0-green.svg)](https://junit.org/junit5/)
 [![CI](https://github.com/mThanuj/dsa/actions/workflows/ci.yml/badge.svg)](https://github.com/mThanuj/dsa/actions/workflows/ci.yml)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.1-ff69b4.svg)](CODE_OF_CONDUCT.md)
 
@@ -47,7 +47,7 @@ This repository contains implementations of common algorithms, starting with **s
 - Lives in its own class under a topic-specific package (e.g., `io.github.mthanuj.sorting`).
 - Follows a simple, consistent API (`solve(...)` for the main operation).
 - Reuses a small set of **shared utilities** (e.g., array `swap` / `reverse`) from `io.github.mthanuj.Utils`.
-- Ships with unit tests using **JUnit 4**.
+- Ships with unit tests using **JUnit Jupiter (JUnit 5+)**.
 
 The project is intentionally lightweight — just **Java + Maven** — so you can clone, build, and run the tests in seconds.
 
@@ -57,7 +57,7 @@ The project is intentionally lightweight — just **Java + Maven** — so you ca
 
 - ✅ **Pure Java** implementations (no external algorithm libraries).
 - ✅ **Maven** build system for easy compilation and dependency management.
-- ✅ **JUnit 4** unit tests for every algorithm.
+- ✅ **JUnit Jupiter (JUnit 5+)** unit tests for every algorithm.
 - ✅ **Topic-based packaging** (e.g., `sorting`, `searching`, `graph`, …) for scalability.
 - ✅ **Shared utilities** (`Utils.swap`, `Utils.reverse`, …) to keep implementations DRY.
 - ✅ **Java 26** — uses the latest language features.
@@ -278,7 +278,7 @@ SOFTWARE.
 ## 🌟 Acknowledgements
 
 - Inspired by classic algorithm textbooks (CLRS, _Introduction to Algorithms_).
-- Powered by [Maven](https://maven.apache.org/) and [JUnit](https://junit.org/junit4/).
+- Powered by [Maven](https://maven.apache.org/) and [JUnit Jupiter](https://junit.org/junit5/).
 
 ---
 
