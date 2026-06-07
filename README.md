@@ -227,7 +227,7 @@ The tables below are the **source of truth** for what's implemented. New topics 
 
 Contributions are welcome! But this is a **learning project**, so please take a moment to read **[`CONTRIBUTING.md`](CONTRIBUTING.md)** before opening an issue or PR. The guide covers:
 
-- 🧠 **The no-AI policy** — write the code yourself; AI is fine as a tutor but not an author.
+- 🧠 **The no-AI policy** — write the **code (logic)** of your contribution yourself. AI is fine as a tutor (explaining concepts, reviewing your approach, etc.), and AI help is also welcome for **non-logic tasks** like drafting **documentation** (e.g., the README entries for the algorithm tables) or commit messages. The "no-AI author" rule applies to the implementation itself — never paste AI-generated algorithm code, tests, or business logic into this repo.
 - 📦 **Use existing packages** — add your `.java` files to the packages already in the repo (e.g., `io.github.mthanuj.sorting`). Don't create new topic packages; if you think one is needed, open an issue first.
 - 🛠 **Development setup** (JDK 26, Maven, IDE)
 - 📏 **Coding conventions** (Java style, naming, `solve(...)` API, `Utils` reuse, Javadoc)
