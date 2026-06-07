@@ -218,6 +218,7 @@ The tables below are the **source of truth** for what's implemented. New topics 
 | Name | Description | Pointers |
 | --- | --- | --- |
 | [LargestElement](src/main/java/io/github/mthanuj/arrays/LargestElement.java) | Scans the array once to find and return the largest element, assuming the input is non-empty. | Seed `max` with `arr[0]`; single pass: for each `i` in `arr`, update `max = i` whenever `i > max`; return `max`. Single linear scan, O(n) time, O(1) extra space — does not mutate the input. |
+| [SecondLargestElement](src/main/java/io/github/mthanuj/arrays/SecondLargestElement.java) | Scans the array once while tracking the top two values, returning the second-largest element. | Seed `max1 = arr[0]`, `max2 = arr[1]`; single pass: if `i > max1` then `max2 = max1` and `max1 = i`; else if `i > max2` then `max2 = i`; return `max2`. Maintains the invariant that `max1 >= max2` after every step — still O(n) time, O(1) extra space, and does not mutate the input. |
 
 ---
 
