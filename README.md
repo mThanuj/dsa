@@ -35,6 +35,7 @@ A personal collection of classic **Data Structures and Algorithms** implemented 
   - [📚 Implemented Algorithms](#-implemented-algorithms)
     - [🔢 Sorting](#-sorting)
     - [📦 Arrays](#-arrays)
+    - [🔍 Searching](#-searching)
   - [🤝 Contributing](#-contributing)
   - [📄 License](#-license)
   - [🌟 Acknowledgements](#-acknowledgements)
@@ -224,6 +225,14 @@ The tables below are the **source of truth** for what's implemented. New topics 
 | [LeftRotateArrayByOne](src/main/java/io/github/mthanuj/arrays/LeftRotateArrayByOne.java) | Rotates the array to the left by one position in place using the three-reversal trick, returning the same (now rotated) array. | Three sequential `Utils.reverse(arr, start, end)` calls on `[start, end)` (end-exclusive) sub-arrays: first reverse the leading element, then the trailing suffix, then the whole array — the net effect shifts every element one slot to the left and wraps the original first element to the back. Reuses `Utils.reverse` from the shared utilities, O(n) time, O(1) extra space, and mutates the input. |
 | [LeftRotateArrayByK](src/main/java/io/github/mthanuj/arrays/LeftRotateArrayByK.java) | Rotates the array to the left by `k` positions in place using the three-reversal trick, returning the same (now rotated) array. | Generalized three-reversal: `Utils.reverse(arr, 0, k - 1)` flips the first `k` elements, `Utils.reverse(arr, k, arr.length - 1)` flips the trailing `n - k` elements, then `Utils.reverse(arr, 0, arr.length - 1)` flips the whole array — the net effect wraps the first `k` elements to the back. Caller is expected to pass a normalized `k` in `[1..n]`; reuses `Utils.reverse`, O(n) time, O(1) extra space, and mutates the input. |
 | [MoveAllZerosToEndOfArray](src/main/java/io/github/mthanuj/arrays/MoveAllZerosToEndOfArray.java) | Moves all zeros in the array to the end while preserving the relative order of the non-zero elements, returning the same (now rearranged) array. | Two-pointer scan: `left` is advanced past the leading non-zero prefix until it lands on the first zero (assumes the input is non-empty and contains at least one zero); `right` then walks the rest of the array, and whenever `arr[right] != 0`, `Utils.swap(arr, left, right)` pulls that non-zero into the front and advances `left` — zeros are effectively bubbled rightward one slot at a time. Reuses `Utils.swap`, O(n) time, O(1) extra space, and mutates the input. |
+
+### 🔍 Searching
+
+> 📖 Package: [`io.github.mthanuj.searching`](src/main/java/io/github/mthanuj/searching/)
+
+| Name | Description | Pointers |
+| --- | --- | --- |
+| [LinearSearch](src/main/java/io/github/mthanuj/searching/LinearSearch.java) | Walks the array once from left to right, returning the index of the first occurrence of `target`, or `-1` if `target` is not present. | Single `for` loop over `i` in `[0..arr.length - 1]`; if `arr[i] == target` return `i` immediately; if the loop finishes, return `-1` to signal "not found". The earliest-encountered match wins, so duplicates resolve to the leftmost index. Assumes non-null input. O(n) time, O(1) extra space, and does not mutate the input. |
 
 ---
 
