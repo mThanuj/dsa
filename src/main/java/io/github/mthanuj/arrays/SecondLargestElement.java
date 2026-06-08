@@ -1,11 +1,11 @@
 package io.github.mthanuj.arrays;
 
 /*
- * Problem:
- * Given an array, second largest element in the array.
- * Print ‘-1’ in the event that either of them doesn’t exist.
- *
- */
+* Problem:
+* Given an array, second largest element in the array.
+* Print ‘-1’ in the event that either of them doesn’t exist.
+*
+*/
 public class SecondLargestElement {
 
     public int solve(int[] arr) {

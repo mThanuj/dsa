@@ -2,6 +2,11 @@ package io.github.mthanuj.arrays;
 
 import io.github.mthanuj.Utils;
 
+/*
+* Problem:
+* Given an integer array nums, rotate the array to the left by k.
+*
+*/
 public class LeftRotateArrayByK {
 
     public int[] solve(int[] arr, int k) {
